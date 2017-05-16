@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''
 Creado por Pablo Castro
 28/03/17
@@ -64,3 +65,4 @@ os.system('/home/batsim/caebat/oas/install/bin/ips.py --simulation='+modelo+' --
 os.chdir('/home/batsim/caebat/vibe/examples')
 copiar_simulacion(nombre)
 eliminar_carpetas(nombre)
+print('Fin de la simulación')
