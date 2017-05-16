@@ -8,8 +8,8 @@ Created on Thu May 11 17:29:37 2017
 """
 Simulacion variando los distintas intensidades del fichero input_keyvalue
 Version 3.1 - Para CAEBAT 3.0
-Carpeta propia para cada simulacion
-NO FUNCIONA TODAVIA - ERROR EN eliminar_carpetas
+Carpeta propia para cada simulacion (No crea una según fecha -> ARREGLAR)
+FUNCIONA PARA CORRIENTES MENORES DE 35A/m^2
 """
 import os
 import shutil
