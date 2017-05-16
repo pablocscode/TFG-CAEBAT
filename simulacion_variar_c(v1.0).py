@@ -7,7 +7,7 @@ Created on Thu May 11 17:29:37 2017
 
 """
 Simulacion variando los distintas intensidades del fichero input_keyvalue
-Version 0.1 - Funciona (a diferencia del 0.0) para CAEBAT 1.0
+Funciona para CAEBAT 1.0
 """
 import os
 import shutil
