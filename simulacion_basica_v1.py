@@ -4,6 +4,7 @@ Creado por Pablo Castro
 28/03/17
 Objetivo:
 Automatizar todo el proceso de simulacion desde el terminal de linux.
+Funciona para CAEBAT 1.0
 
 Como usarlo:
 1- Se situa el script en la carpeta 'examples'.
