@@ -37,11 +37,11 @@ def eliminar_carpetas(Nombre_simulacion):
 def leer_dato(datos_readlines,fila):
     return datos_readlines[fila].split()[0].replace('d','e')
 
-#Función para actualizar la intensidad (ACTUALIZADA)
+#Función para actualizar la intensidad (ACTUALIZADA A CAEBAT 3.0)
 def cambio_intensidad(intensidad,datos_readlines):
-    linea_simulacion = datos_readlines[18].split('=')
+    linea_simulacion = datos_readlines[19].split('=')
     linea_simulacion[1] = str(intensidad)
-    datos_readlines[18] = '='.join(linea_simulacion)+'\n'
+    datos_readlines[19] = '='.join(linea_simulacion)+'\n'
     return datos_readlines
 
 
