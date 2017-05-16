@@ -71,7 +71,7 @@ intensidades = [35*0.2, 35*0.5, 35, 35*2, 35*3, 35*5]
 
 #Creamos una carpeta dentro de Mis simulaciones donde guardar los distintos resultados
 os.mkdir('/home/batsim/Desktop/Mis simulaciones/%s Variar C-rate' %nombre)
-
+print('Carpeta de simulacion creada')
 #Bucle en el que actualizamos el valor de la intensidad y simulamos
 for intensidad in intensidades:
     #Cambiamos el path a la carpeta seleccionada
@@ -94,8 +94,11 @@ for intensidad in intensidades:
     os.chdir('/home/batsim/caebat/vibe/examples/'+nombre)
     #Ejectuamos la simulacion
     os.system('/home/batsim/caebat/ipsframework-code/install/bin/ips.py --simulation='+modelo+' --log=temp.log --platform=../config/batsim.conf -a')
+    print('Simulación finalizada')
     os.chdir('/home/batsim/caebat/vibe/examples')
     copiar_simulacion(nombre)
+    print('Simulación copiada en Mis simulaciones')
     eliminar_carpetas(nombre)
+    print('Carpetas repetidas eliminadas')
 
-print('Fin de la simulacion')
+print('Fin de las simulaciones')
