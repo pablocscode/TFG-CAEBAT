@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu May 11 17:29:37 2017
-
 @author: Pablo
 """
 
@@ -22,7 +21,7 @@ def copiar_simulacion(Nombre_simulacion,Fecha_simulacion):
 	#La convertimos a un formato legible y nombramos la nueva carpeta
 	nombre_carpeta_copia = Nombre_simulacion + ' ' + str(datetime.fromtimestamp(fecha))
 	shutil.copytree(Nombre_simulacion,nombre_carpeta_copia)
-	shutil.move(nombre_carpeta_copia,'/home/batsim/Desktop/Mis simulaciones/'Nombre_simulacion+' Variar C-rate '+Fecha_simulacion)
+	shutil.move(nombre_carpeta_copia,'/home/batsim/Desktop/Mis simulaciones/'+ Nombre_simulacion + ' Variar C-rate '+Fecha_simulacion)
 
 #Funcion para eliminar las carpetas una vez acabada la simulacion
 def eliminar_carpetas(Nombre_simulacion):
@@ -70,7 +69,7 @@ else:
 intensidades = [35*0.2, 35*0.5, 35, 35*2, 35*3, 35*5]
 
 #Creamos una carpeta dentro de Mis simulaciones donde guardar los distintos resultados
-Fecha_simulacion = datetime.datetime.now()
+Fecha_simulacion = str(datetime.now())
 os.mkdir('/home/batsim/Desktop/Mis simulaciones/' +nombre+ ' Variar C-rate '+ Fecha_simulacion)
 print('Carpeta de simulacion creada')
 #Bucle en el que actualizamos el valor de la intensidad y simulamos
