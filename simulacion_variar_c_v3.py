@@ -14,16 +14,15 @@ FUNCIONA PARA CORRIENTES MENORES DE 35A/m^2
 import os
 import shutil
 from datetime import datetime
-import time
 
-def copiar_simulacion(Nombre_simulacion):
+def copiar_simulacion(Nombre_simulacion,Fecha_simulacion):
 	#Calculamos la fecha en la que la carpeta fue creada
 	fecha = os.stat(Nombre_simulacion).st_mtime
 	
 	#La convertimos a un formato legible y nombramos la nueva carpeta
 	nombre_carpeta_copia = Nombre_simulacion + ' ' + str(datetime.fromtimestamp(fecha))
 	shutil.copytree(Nombre_simulacion,nombre_carpeta_copia)
-	shutil.move(nombre_carpeta_copia,'/home/batsim/Desktop/Mis simulaciones/%s Variar C-rate' % Nombre_simulacion)
+	shutil.move(nombre_carpeta_copia,'/home/batsim/Desktop/Mis simulaciones/'Nombre_simulacion+' Variar C-rate '+Fecha_simulacion)
 
 #Funcion para eliminar las carpetas una vez acabada la simulacion
 def eliminar_carpetas(Nombre_simulacion):
@@ -71,7 +70,8 @@ else:
 intensidades = [35*0.2, 35*0.5, 35, 35*2, 35*3, 35*5]
 
 #Creamos una carpeta dentro de Mis simulaciones donde guardar los distintos resultados
-os.mkdir('/home/batsim/Desktop/Mis simulaciones/' +nombre+ ' Variar C-rate'+time.strftime('%c'))
+Fecha_simulacion = datetime.datetime.now()
+os.mkdir('/home/batsim/Desktop/Mis simulaciones/' +nombre+ ' Variar C-rate '+ Fecha_simulacion)
 print('Carpeta de simulacion creada')
 #Bucle en el que actualizamos el valor de la intensidad y simulamos
 for intensidad in intensidades:
@@ -97,7 +97,7 @@ for intensidad in intensidades:
     os.system('/home/batsim/caebat/ipsframework-code/install/bin/ips.py --simulation='+modelo+' --log=temp.log --platform=../config/batsim.conf -a')
     print('Simulación finalizada')
     os.chdir('/home/batsim/caebat/vibe/examples')
-    copiar_simulacion(nombre)
+    copiar_simulacion(nombre,Fecha_simulacion)
     print('Simulación copiada en Mis simulaciones')
     eliminar_carpetas(nombre)
     print('Carpetas repetidas eliminadas')
