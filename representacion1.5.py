@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Mar 23 18:44:45 2017
-
 @author: Pablo
-"""
 
-"""
-Modificado para leer ambos archivos (halfcells.out y profiles.out)
+Objetivos:
+-Lectura y representación de los archivos profiles.out y halfcells.out
+-La lectura debe ser capaz de leer los archivos sin importar su longitud
+
+Guía:
+-Ambos archivos deben encontrarse en la misma carpeta que este script
 """
 
 import numpy as np
@@ -122,4 +124,5 @@ def plot(numero):
     plt.ylabel('J main')
     plt.xlabel('Distancia')
 """
+#Representamos los resultados para el último tiempo
 plot(num_tiempos-1)
