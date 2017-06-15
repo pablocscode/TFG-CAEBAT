@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Apr 10 10:14:31 2017
-
 @author: Pablo
+
+Objetivos:
+-Representar de forma dinámica los resultados del archivo profiles.out para cualquier tiempo
+
+Guía:
+-Este script debe encontrarse en la misma carpeta que los archivos profiles.out y halfcells.out
 """
 
 import numpy as np
@@ -10,7 +15,7 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider
 
 #Leemos todas las líneas del archivo
-archivo = open('profiles.txt','r')
+archivo = open('profiles.out','r')
 lineas = archivo.readlines()
 archivo.close()
 
@@ -24,13 +29,13 @@ while lineas[i] != '  \n':
     i += 1
 
 #Calculamos el número de tiempos del archivo
-datos_halfcells = open('halfcells.txt','r')
+datos_halfcells = open('halfcells.out','r')
 lineas_halfcells = datos_halfcells.readlines()
 datos_halfcells.close()
 num_tiempos = len(lineas_halfcells)-1 #la primera linea no tiene datos
 
 #Declaramos los vectores que contendrán los valores de las columnas
-distancia = np.zeros((num_tiempos,num_distancias))  #Cada columna tiene 101 filas
+distancia = np.zeros((num_tiempos,num_distancias))
 C_Elec = np.zeros((num_tiempos,num_distancias))
 C_Sol_Surf = np.zeros((num_tiempos,num_distancias))
 Liq_Pot = np.zeros((num_tiempos,num_distancias))
@@ -81,10 +86,10 @@ fig2 = plt.figure(2)
 ax2 = fig2.add_subplot(1,1,1)
 #plt.axis([0, 1, -10, 10])
 plt.subplots_adjust(left=0.25, bottom=0.25)
-ax2.set_ylim([0, 0.6])
+ax2.set_ylim([0, 0.9])
 ax2.set_xlim([0, 100])
 axi2  = plt.axes([0.2, 0.15, 0.65, 0.03])
-si2 = Slider(axi2, 'Tiempo',0,100,valinit = 0)
+si2 = Slider(axi2, 'Tiempo',0,num_tiempos-1,valinit = 0)
 
 
 
@@ -96,8 +101,8 @@ def plot1(val):
 def plot2(val):
     i = int(si2.val)
     ax2.clear()
-    ax2.set_ylim([0, 0.6])
-    ax2.set_xlim([0, 100])
+    ax2.set_ylim([0, 0.9])
+    ax2.set_xlim([0, num_distancias])
     ax2.plot(C_Sol_Surf[i])
     
 si1.on_changed(plot1)
